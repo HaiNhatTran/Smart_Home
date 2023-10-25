@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;1,200&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Anton', sans-serif;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-family: 'Josefin Sans', sans-serif;
+            font-family: 'Lato', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        header {
+            height: 70px;
+            width: 100vw;
+            display: flex;
+        }
+
+        .logo {
+            position: fixed;
+            top: 0;
+            left: 12px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-img {
+            height: 70px;
+            width: 70px;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background-color: #D2E0FB;
+        }
+
+        .logo-title {
+            font-size: 32px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #4B527E;
+        }
+
+        .body {
+            display: flex;
+            flex-direction: column;
+            background-image: url('./image/nen.jpg');
+            width: 100%;
+            height: calc(100vh - 70px);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .clock {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            font-size: 28px;
+            font-weight: 500;
+            padding: 12px 0;
+        }
+
+        .body-container {
+            display: flex;
+            margin-top: 12px;
+        }
+
+        .right-bar {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 12px;
+        }
+
+        .right-bar-btn {
+            border: none;
+            background-color: #D2E0FB;
+            border-radius: 8px;
+            height: 50px;
+            width: 150px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .right-bar-btn:hover {
+            background-color: #a5bcd4;
+        }
+
+        .home {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 12px;
+        }
+
+
+        .display {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .component {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .component-img {
+            height: 100px;
+        }
+
+        .parameter {
+            font-size: 18px;
+            padding: 6px 0;
+            font-weight: 700;
+            color: #C70039;
+        }
+
+        .component-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .activated {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            width: 100%;
+            padding-top: 28px;
+        }
+
+        .activated-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .activated-img {
+            height: 150px;
+            width: 150px;
+        }
+
+        .activated-title {
+            font-size: 18px;
+            padding: 12px 0;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .activated-btn {
+            border: none;
+            background-color: #D2E0FB;
+            border-radius: 8px;
+            height: 40px;
+            width: 60px;
+            font-size: 20px;
+            cursor: pointer;
+            margin: 0 6px;
+        }
+
+        .activated-btn:hover {
+            background-color: #a5bcd4;
+        }
+
+        .implementer {
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            font-size: 1rem;
+            bottom: 24px;
+            left: 10px;
+        }
+
+        .implementer-contact {
+            text-decoration: none;
+            color: black;
+        }
+
+        .implementer-contact:hover {
+            color: gray;
+        }
+
+        .active {
+            background-color: #a5bcd4;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .rotate-image {
+            display: inline-block;
+            animation: rotate 5s linear infinite;
+        }
+
+        #speed-control {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+
+            <img class="logo-img" src="./image/Logo-Feee.png" alt="">
+        </div>
+        <div class="header-title">
+            <h1 class="logo-title">Smart Home</h1>
+        </div>
+    </header>
+
+    <div class="body">
+        <div class="clock">
+            <div id="time"></div>
+        </div>
+        <div class="body-container">
+            <div class="right-bar">
+                <button onclick="function_q1()" class="right-bar-btn">Phòng Khách</button>
+                <button onclick="function_q2()" class="right-bar-btn">Phòng bếp</button>
+                <button onclick="function_q3()" class="right-bar-btn">Phòng ngủ</button>
+                <button onclick="function_q4()" class="right-bar-btn">Phòng hát</button>
+            </div>
+            <div class="home">
+                <div class="display">
+                    <div class="component" id="temperature">
+                        <img class="component-img" src="./image/nhietdo1.png">
+                        <span class="parameter" id="parameter-temperature">giá trị</span>
+                        <span class="component-title">Nhiệt độ</span>
+                    </div>
+                    <div class="component" id="humidity">
+                        <img class="component-img" src="./image/doam.png">
+                        <span class="parameter" id="parameter-humidity">giá trị</span>
+                        <span class="component-title">Độ ẩm</span>
+                    </div>
+                    <div class="component" id="air">
+                        <img class="component-img" src="./image/o2.png">
+                        <span class="parameter" id="parameter-air">chất lượng</span>
+                        <span class="component-title">Không khí</span>
+                    </div>
+                </div>
+                <div class="activated">
+                    <div class="activated-item">
+                        <img class="activated-img" src="./image/light_off.png" id="call">
+                        <span class="activated-title">Đèn</span>
+                        <div>
+                            <button class="activated-btn" id="btn1" data-group="group1">On</button>
+                        </div>
+                    </div>
+                    <div class="activated-item">
+                        <img class="activated-img tow-bar" src="./image/canh-quat-hatari-20-inch.png" id="led">
+                        <span class="activated-title">Quạt</span>
+                        <div>
+                            <input type="range" id="speed-control" min="1" max="50" value="0" step="1">
+                        </div>
+                    </div>
+                    <div class="activated-item">
+                        <img class="activated-img" src="./image/dieuhoa_off.png" id="loa">
+                        <span class="activated-title">Điều hòa</span>
+                        <div>
+                            <button class="activated-btn" data-group="group3" id="btn5">On</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="implementer">
+        <p> Trần Nhật Hải - 20161311 </p>
+        <p> Trương Cao Nam Khánh - 20161095 </p>
+        <p> Mọi thông tin chi tiết xin liên lạc qua <br />SĐT: <a class="implementer-contact"
+                href="tel:+84961405181">0961405181</a> <br />Gmail: <a class="implementer-contact"
+                href="mailto:Trannhathai0101@gmail.com">Trannhathai0101@gmail.com</a> </p>
+    </div>
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+<script>
+    // quay quạt
+    const towBar = document.querySelector('.tow-bar');
+    const speedControl = document.getElementById('speed-control');
+
+    speedControl.addEventListener('input', () => {
+        const speed = speedControl.value;
+        if (speed > 0) towBar.classList.add('rotate-image')
+        const rotateImage = document.querySelector('.rotate-image');
+        const rotationDuration = 10 / speed;
+        firebase.database().ref("thietbi2").set({ quat: 0 })
+        if (speed > 1) {
+            rotateImage.style.animation = `rotate ${rotationDuration}s linear infinite`;
+            firebase.database().ref("thietbi2").set({ quat: 1 })
+        }
+        else {
+            rotateImage.style.animation = 'none';
+        }
+    });
+
+    //active
+    let buttons = document.querySelectorAll(".right-bar-btn");
+    buttons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            buttons.forEach(function (btn) {
+                btn.classList.remove("active");
+            });
+            button.classList.add("active");
+        });
+    });
+
+    // Clock
+    function clock() {
+        let time = new Date();
+        let gio = time.getHours();
+        let phut = time.getMinutes();
+        let giay = time.getSeconds();
+
+        if (gio < 10) gio = "0" + gio;
+        if (phut < 10) phut = "0" + phut;
+        if (giay < 10) giay = "0" + giay;
+
+        document.getElementById("time").innerHTML = gio + ":" + phut + ":" + giay;
+        setTimeout("clock()", 1000);
+    }
+    clock();
+
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyBGm8QPElqz0uFrAOhvYAknnb9tZcEull4",
+        authDomain: "ttiot-dht11-72193.firebaseapp.com",
+        databaseURL: "https://ttiot-dht11-72193-default-rtdb.firebaseio.com",
+        projectId: "ttiot-dht11-72193",
+        storageBucket: "ttiot-dht11-72193.appspot.com",
+        messagingSenderId: "277722861265",
+        appId: "1:277722861265:web:50f018bb30e36e16debff0",
+        measurementId: "G-J06N6WQW5X"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    //functions
+    var nhietDo = document.getElementById('parameter-temperature');
+    var dbRef = firebase.database().ref('P_Khach').child('Nhietdo');
+    var doAm = document.getElementById('parameter-humidity');
+    var dbRef2 = firebase.database().ref('P_Khach').child('Doam');
+    var khongkhi = document.getElementById('parameter-air');
+    var dbRef3 = firebase.database().ref('P_Khach').child('khongkhi');
+
+    var nhietDo_q2 = document.getElementById('parameter-temperature');
+    var dbRef4 = firebase.database().ref('P_Bep').child('Nhietdo');
+    var doAm_q2 = document.getElementById('parameter-humidity');
+    var dbRef5 = firebase.database().ref('P_Bep').child('Doam');
+    var khongkhi_q2 = document.getElementById('parameter-air');
+    var dbRef6 = firebase.database().ref('P_Bep').child('khongkhi');
+
+    var nhietDo_q3 = document.getElementById('parameter-temperature');
+    var dbRef7 = firebase.database().ref('P_Ngu').child('Nhietdo');
+    var doAm_q3 = document.getElementById('parameter-humidity');
+    var dbRef8 = firebase.database().ref('P_Ngu').child('Doam');
+    var khongkhi_q3 = document.getElementById('parameter-air');
+    var dbRef9 = firebase.database().ref('P_Ngu').child('khongkhi');
+
+    var nhietDo_q4 = document.getElementById('parameter-temperature');
+    var dbRef10 = firebase.database().ref('P_Hat').child('Nhietdo');
+    var doAm_q4 = document.getElementById('parameter-humidity');
+    var dbRef11 = firebase.database().ref('P_Hat').child('Doam');
+    var khongkhi_q4 = document.getElementById('parameter-air');
+    var dbRef12 = firebase.database().ref('P_Hat').child('khongkhi');
+    function function_q1() {
+        dbRef.on('value', snap => nhietDo.innerText = snap.val());
+        dbRef2.on('value', snap => doAm.innerText = snap.val());
+        dbRef3.on('value', snap => khongkhi.innerText = snap.val());
+    }
+    function function_q2() {
+        dbRef4.on('value', snap => nhietDo_q2.innerText = snap.val());
+        dbRef5.on('value', snap => doAm_q2.innerText = snap.val());
+        dbRef6.on('value', snap => khongkhi_q2.innerText = snap.val());
+    }
+    function function_q3() {
+        dbRef7.on('value', snap => nhietDo_q3.innerText = snap.val());
+        dbRef8.on('value', snap => doAm_q3.innerText = snap.val());
+        dbRef9.on('value', snap => khongkhi_q3.innerText = snap.val());
+    }
+    function function_q4() {
+        dbRef10.on('value', snap => nhietDo_q4.innerText = snap.val());
+        dbRef11.on('value', snap => doAm_q4.innerText = snap.val());
+        dbRef12.on('value', snap => khongkhi_q4.innerText = snap.val());
+    }
+
+    // khoi tao cac thong so
+    let btn1 = document.querySelector('#btn1');
+    let img1 = document.querySelector('#call');
+    // functions nut bam
+    // const database=firebase.database();
+    // const deviceRef=database.ref('quan1');
+    let isBtnLed = false;
+    function setIsBtnLed() {
+        if (isBtnLed) {
+            btn1.textContent = "On";
+            img1.src = './image/light_off.png';
+            firebase.database().ref("thietbi1").set({ den1: 0 })
+        } else {
+            btn1.textContent = "Off";
+            img1.src = './image/light_on.png';
+            firebase.database().ref("thietbi1").set({ den1: 1 })
+        }
+        isBtnLed = !isBtnLed;
+    }
+    btn1.addEventListener('click', () => {
+        setIsBtnLed()
+    })
+
+    // khoi tao cac thong so
+    let img2 = document.querySelector('#led');
+
+    // khoi tao cac thong s
+    let btn5 = document.querySelector('#btn5');
+    let img3 = document.querySelector('#loa');
+
+    // functions nut bam
+    let isBtnDh = false;
+    function setIsBtnDh() {
+        if (isBtnDh) {
+            btn5.textContent = "On";
+            img3.src = './image/dieuhoa_off.png';
+            firebase.database().ref("thietbi3").set({ dieuhoa: 0 })
+        } else {
+            btn5.textContent = "Off";
+            img3.src = './image/dieuhoa_on.png';
+            firebase.database().ref("thietbi3").set({ dieuhoa: 1 })
+        }
+        isBtnDh = !isBtnDh;
+    }
+    btn5.addEventListener('click', () => {
+        setIsBtnDh()
+    })
+</script>
+
+</html>
